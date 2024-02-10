@@ -8,6 +8,6 @@
 import Foundation
 
 
-enum BoxOfficeError: Error {
+public enum BoxOfficeError: Error {
     case recentDateIsInvalid
 }

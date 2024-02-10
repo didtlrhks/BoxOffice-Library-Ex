@@ -2,19 +2,26 @@
 // https://docs.swift.org/swift-book
 
 import Foundation
+//엑세스컨트롤하는건 5가지가있고
+//open  오픈과 퍼블릭의 차이점으로는 오버라이드가 되냐안되냐임 둘다 모듈밖에서 접근이 가능하지만
+//public 퍼블릭은 오버라이드가 안됨 
+    //internal
+//fileprivate
+//private
 
-class BoxOffices {
-    let apiClient: APIClient
+
+public class BoxOffices {
+   private let apiClient: APIClient
     
-    var apiKey: String {
+   public var apiKey: String {
         apiClient.key
     }
     
-    init(key : String) {
+    public init(key : String) {
         self.apiClient = APIClient(key: key)
     }
     
-    func fetchDailyTop10() async -> Result<[Movie], Error> {
+   public func fetchDailyTop10() async -> Result<[Movie], Error> {
         //어제꺼를 가져와야함
         guard let yesterday = Date().yesterday else {
             return .failure(BoxOfficeError.recentDateIsInvalid)

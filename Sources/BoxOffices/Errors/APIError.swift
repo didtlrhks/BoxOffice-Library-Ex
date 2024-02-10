@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum APIError : Error {
+public enum APIError : Error {
     case urlIsInvalid
     case responseIsNotExpected
     case requestIsInvalid(_ statusCode: Int)
@@ -16,7 +16,7 @@ enum APIError : Error {
 }
 
 extension APIError {
-    init?(httpResponse : HTTPURLResponse?) {
+    init?(httpResponse : HTTPURLResponse?) {// 지금 인터널인거임
         
         guard let httpResponse else {
             self = APIError.responseIsNotExpected// error
